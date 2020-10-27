@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>뷰 기초 익히기</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <!-- {{ nextYear('안녕') }}
+      <input :type="type" :value="inputData" />
+      <a :href="getKossi('kossiecoder')">코지 코더 채널</a> -->
+      <!-- {{ year }}<br> -->
+      <!-- <button v-on:click="plus">더하기</button>
+          <button v-on:click="minus">빼기</button> -->
+      <form v-on:submit.prevent="submit">
+        <input type="text"> <br>
+        <button type="submit">Submit</button>
+      </form>
+      <h1 @click="pressKey">{{ keyup }}</h1>
+    </div>
+    <script>
+      new Vue({
+        el: "#app",
+        data: {
+          person: {
+            name: "코지 코더",
+            age: 28,
+          },
+          inputData: "hello",
+          type: "number",
+          link: "https://www.youtube.com/",
+          year: 2018,
+          keyup: 'press any key!'
+        },
+        methods: {
+          getKossi(channel) {
+            return this.link + channel;
+          },
+          nextYear(greeting) {
+            return `${greeting}! ${this.person.name}는 내년에
+            ${this.person.age + 1}살 입니다.`;
+          },
+          otherMethod() {
+            this.nextYear("안녕하세요");
+          },
+          alert() {
+            alert('hi kossi coder');
+          },
+          plus() {
+            this.year++;
+          },
+          minus(){
+            this.year--;
+          },
+          submit(){
+            alert('submitted');
+            console.log('hello');
+          },
+          pressKey(){
+            alert('press');
+            this.keyup = 'press!!'
+          }
+
+
+        },
+      });
+    </script>
+  </body>
+</html>
